@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/fronted :: head"></head>
+<header th:replace="layout/fronted :: header"></header>
+
+<body style="background-image: url('images/bg_1.jpg');">
+	
+
+	<main>
+		<div class="container p-2 mt-5 mb-5">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card bg-light">
+					<h1 class="text-center pt-5" th:text="${titulo}"></h1>
+					<div class="card-body">
+						<form th:action="@{/equipo/insertar}" th:object="${equipo}" method="post">
+							<input type="hidden" th:field="*{id}" th:value="${equipo.id}" />
+							<div class="form-group">
+								<label class="form-label">Nombre: </label>
+								<input type="text" th:field="*{nombre}" class="form-control bg-light"
+									th:errorclass="'form-control alert-danger'" />
+								<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+									th:errors="*{nombre}"></small>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Entrenador: </label>
+								<select class="form-control bg-light" th:field="*{entrenador}">
+									<option th:each="entrenador :${entrenadores}" th:value="${entrenador.id}"
+										th:text="${entrenador.nombre}" />
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Asociación: </label>
+								<select class="form-control bg-light" th:field="*{asociacion}">
+									<option th:each="asociacion :${asociaciones}" th:value="${asociacion.id}"
+										th:text="${asociacion.nombre}" />
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Jugador: </label>
+								<select class="form-control bg-light" th:field="*{jugadores}">
+									<option th:each="jugador :${jugadores}" th:value="${jugador.id}"
+										th:text="${jugador.nombre}"/>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Competencia: </label>
+								<select class="form-control bg-light" th:field="*{competencias}">
+									<option th:each="competencia :${competencias}" th:value="${competencia.id}"
+										th:text="${competencia.nombre}" />
+								</select>
+							</div>
+							<div class="box-footer mt-2">
+								<input type="submit" value="Guardar" class="btn btn-primary">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer th:replace="layout/fronted :: footer"></footer>
+</body>
+
+</html>

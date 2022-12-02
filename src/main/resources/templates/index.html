@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/fronted :: head"></head>
+<header th:replace="layout/fronted :: header"></header>
+<body style="background-image: url('images/bg_1.jpg');">
+	
+	<h1 th:text="${titulo}" class="text-center pt-5"></h1>
+	<main class="d-flex flex-wrap justify-content-around align-items-center bg-light  pt-5 p-3">
+		<div class="card  mb-5 shadow d-flex flex-column" style="width: 18rem;">
+			
+			<div class="card-body">
+			<h1 class="text-dark d-flex justify-content-around align-items-center "><ion-icon size="large" name="football-outline"></ion-icon></h1>
+				<h5 class="card-title text-center text-dark">Clubes</h5>
+				<center><a th:href="@{/equipo}" class="btn btn-info">Ver</a></center>
+			</div>
+		</div>
+		
+		<div class="card mb-5 shadow" style="width: 18rem;">
+			
+			<div class="card-body">
+			<h1 class="text-dark d-flex justify-content-around align-items-center "><ion-icon name="business-outline"></ion-icon></h1>
+				<h5 class="card-title text-center text-dark">Asociaciónes</h5>
+				<center><a th:href="@{/asociacion}" class="btn btn-info">Ver</a></center>
+			</div>
+		</div>
+		
+		<div class="card mb-5 shadow" style="width: 18rem;">
+			
+			<div class="card-body">
+			<h1 class="text-dark d-flex justify-content-around align-items-center "><ion-icon name="time-outline"></ion-icon></h1>
+				<h5 class="card-title text-center text-dark">Entrenadores</h5>
+				<center><a th:href="@{/entrenador}" class="btn btn-info">Ver</a></center>
+			</div>
+		</div>
+		<div class="card mb-5 shadow" style="width: 18rem;">
+			
+			<div class="card-body">
+			<h1 class="text-dark d-flex justify-content-around align-items-center "><ion-icon name="accessibility-outline"></ion-icon></h1>
+				<h5 class="card-title text-center text-dark">Jugadores</h5>
+				<center><a th:href="@{jugador}" class="btn btn-info">Ver</a></center>
+			</div>
+		</div>
+		<div class="card mb-5 shadow" style="width: 18rem;">
+			<div class="card-body">
+			<h1 class="text-dark d-flex justify-content-around align-items-center "><ion-icon name="ribbon-outline"></ion-icon></h1>
+				
+				<h5 class="card-title text-center text-dark">Competencias</h5>
+				<center><a th:href="@{/competicion}" class="btn btn-info">Ver</a></center>
+			</div>
+		</div>
+	</main>
+	<footer th:replace="layout/fronted :: footer"></footer>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/fronted :: head"></head>
+<header th:replace="layout/fronted :: header "></header>
+<body style="background-image: url('images/bg_1.jpg');">
+		
+	
+	<main class="container pt-5 mt-3">
+		<h1 class="text-center m-3 pt-5" th:text="${titulo}"></h1>
+		<table class="table table-striped table-light">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Entrenador</th>
+					<th>Jugador</th>
+					<th>Asociación</th>
+					<th>Competencia</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="equipo : ${equipos}">
+					<th th:text="${equipo.id}"></th>
+					<td th:text="${equipo.nombre}"></td>
+					<td th:text="${equipo.entrenador.nombre}"></td>
+					<td><th:block th:each="jugador :${equipo.jugadores} " >
+						<laber th:text="${jugador.nombre}">
+						</laber>
+					</th:block></td>
+					<td th:text="${equipo.asociacion.nombre}"></td>
+					<td><th:block th:each="competicion :${equipo.competencias}">
+						<label th:text="${competicion.nombre}">
+						</label>
+					</th:block></td>
+					<td><a th:href="@{/equipo/insertar/} + ${equipo.id}" class="btn btn-info ">Editar</a></td>
+					<td><a th:href="@{/equipo/eliminar/} + ${equipo.id}" class="btn btn-danger ">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="d-flex flex-row justify-content-center mb-5">
+			<div class="m-2">
+				<a th:href="@{/equipo/insertar}"><button type="button" class="btn btn-primary mt-4 w-100">Agregar Equipo</button></a>
+			</div>
+			<div class="m-2">
+				<a th:href="@{/equipo/exportarExcel}"><button type="button" class="btn btn-success mt-4 w-100">Exportar a Excel</button></a>
+			</div>
+		</div>
+	</main>
+	<footer th:replace="layout/fronted :: footer"></footer>
+</body>
+
+</html>
